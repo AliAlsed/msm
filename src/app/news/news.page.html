@@ -1,0 +1,51 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar color="primary">
+        
+      <ion-title slot="end"> <h4>الاخبار</h4> </ion-title>
+        <ion-buttons  (click)="gotohome()">
+          <h4><ion-icon name="arrow-round-back" slot="start">
+            </ion-icon></h4>
+        </ion-buttons>
+
+</ion-toolbar>
+</ion-header>
+
+  <ion-content>
+<ion-card>
+ 
+
+
+    <ion-slides>
+      <ion-slide class="card" *ngFor="let item of newsData">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-sm style="text-align: center;">
+              <h4 class="card-title"> {{item.title}}</h4>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+
+            <ion-col size-sm style="text-align: center;">
+              <img style="text-align: center;" class="card-img-top" width="75" height="75" src="{{item.image}}">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm style="text-align: right">
+              <h6 style="text-align: center;" class="card-text" [innerHTML]="substringText(item.description)"
+                class="font-italic"></h6>
+
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+      </ion-slide>
+    </ion-slides>
+
+  </ion-card>
+
+  </ion-content>
+
+
+</ion-app>

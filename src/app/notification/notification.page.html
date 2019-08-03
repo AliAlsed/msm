@@ -1,0 +1,44 @@
+
+    <ion-header translucent>
+        <ion-toolbar color="primary">
+            <ion-title slot="end"> <h4>الاشعارات</h4> </ion-title>
+            <ion-buttons  (click)="gotohome()">
+              <ion-icon name="arrow-round-back" slot="start">
+              </ion-icon>
+            </ion-buttons>
+  
+
+</ion-toolbar>
+</ion-header>
+      <br>
+
+      <br>
+      
+  <ion-content>
+
+
+
+      <div class="col-md-12" style="direction: rtl" *ngFor="let item of notiData">
+          <div class="card" >
+            <div class="card-header card-header-danger" style="text-align: center;">
+              <h4 class="card-title ">
+                  {{item.subject}}
+                </h4>
+                  <div class="card-body"  >
+                      
+                      <h6   class="font-italic">
+                          {{item.content}}
+                        </h6>
+
+                  </div>
+             
+
+    
+            </div>
+          </div>
+        </div>
+
+    
+  
+  </ion-content>
+  

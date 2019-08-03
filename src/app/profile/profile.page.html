@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    
+    <ion-title slot="end"> <h4>المعلومات الشخصية</h4> </ion-title>
+  <ion-buttons  (click)="gotohome()">
+    <ion-icon name="arrow-round-back" slot="start">
+    </ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list *ngFor="let profile of myprofileData">
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/identification.svg" />
+      </ion-label>
+      <ion-badge color="tertiary"      slot="end"  style="font-size:8px">
+       <h5> الاسم الكامل : {{profile.fullName}} </h5>
+      </ion-badge>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-label>
+        <img  width="70" height="70" src="../../assets/imgs/presentation.svg" />
+      </ion-label>
+      <ion-badge  color="tertiary"  slot="end"  style="font-size:8px">
+      <h5>  المرحلة : {{profile.stage}}</h5>
+      </ion-badge>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        <img  width="70" height="70" src="../../assets/imgs/desk.svg" />
+      </ion-label>
+      <ion-badge color="tertiary"  slot="end"  style="font-size:8px">
+       <h5> الشعبة : {{profile.division}}  </h5>
+      </ion-badge>
+    </ion-item>
+
+
+
+
+
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/genders.svg" />
+      </ion-label>
+      <ion-badge color="tertiary"  slot="end"  style="font-size:8px">
+        <h5>الجنس : {{profile.gender}}  </h5>
+      </ion-badge>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/balloons.svg" />
+      </ion-label>
+      <ion-badge color="tertiary" slot="end"  style="font-size:8px">
+          <h5> تاريخ الميلاد : {{profile.birthdate}} </h5>
+      </ion-badge>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/placeholder.svg" />
+      </ion-label>
+      <ion-badge color="tertiary"  slot="end" style="font-size:8px">
+        <h5>
+            العنوان : {{profile.address}}
+        </h5>
+        
+      </ion-badge>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/smartphone.svg" />
+      </ion-label>
+      <ion-badge color="tertiary" slot="end" style="font-size:8px">
+       <h5>
+       الهاتف : {{profile.mobile}}
+      </h5>
+      </ion-badge>
+    </ion-item>
+
+  </ion-list>
+
+
+
+
+</ion-content>

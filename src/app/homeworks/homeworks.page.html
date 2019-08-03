@@ -1,0 +1,70 @@
+<ion-app>
+
+
+
+  <ion-header translucent>
+    <ion-toolbar color="primary">
+        <ion-title slot="end"> <h4>الواجبات</h4> </ion-title>
+        <H4>
+            <ion-buttons  (click)="gotohome()">
+                <ion-icon name="arrow-round-back" slot="start">
+                </ion-icon>
+              </ion-buttons>
+        </H4>
+        
+    </ion-toolbar>
+  </ion-header>
+
+
+
+
+  
+  
+
+
+
+  <ion-content>
+    <br>
+    <br>
+    
+    
+  <ion-card color="primary">
+      <ion-card-header style="text-align: center">
+          
+          <ion-card-title> <h4>قائمة الفواتير </h4></ion-card-title>
+        </ion-card-header>
+      <div class="col-md-12" style="direction: rtl">
+         
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-danger ">
+              
+              <thead class="text-danger">
+
+
+
+
+                  <th>المادة </th>
+                  <th>الموضوع</th>
+                  <th>التفاصيل</th>
+                  <th>التاريخ</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let homework of homeworkData">
+                    <td>{{homework.course}}</td>
+                    <td>{{homework.subject}}</td>
+                    <td>{{homework.description}}</td>
+                    <td>{{homework.date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+         
+
+        </div>
+      </div>
+    
+</ion-card>
+  </ion-content>
+
+</ion-app>

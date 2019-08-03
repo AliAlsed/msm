@@ -1,0 +1,71 @@
+
+
+
+<ion-header translucent >
+  <ion-toolbar color="primary" >
+    
+
+    <ion-title slot="end"> <h4> خط النقل </h4> </ion-title>
+    <ion-buttons  (click)="gotohome()">
+      <h4>
+          <ion-icon name="arrow-round-back" slot="start">
+            </ion-icon>
+      </h4>
+   
+    </ion-buttons>
+
+    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-list *ngFor="let bus of busData">
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/identification.svg" />
+      </ion-label>
+      <ion-badge color="tertiary"      slot="end"  style="font-size:8px">
+       <h5> أسم السائق : {{bus.name}} </h5>
+      </ion-badge>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        <img width="70" height="70" src="../../assets/imgs/smartphone.svg" />
+      </ion-label>
+      <ion-badge color="tertiary" slot="end" style="font-size:8px">
+       <h5>
+      هاتف السائق : {{bus.mobile}}
+      </h5>
+      </ion-badge>
+    </ion-item>
+
+    
+
+
+    <ion-item>
+      <ion-label>
+        <img  width="70" height="70" src="../../assets/imgs/carnum.svg" />
+      </ion-label>
+      <ion-badge color="tertiary"  slot="end"  style="font-size:8px">
+       <h5> رقم السيارة : {{bus.carnum}}  </h5>
+      </ion-badge>
+    </ion-item>
+
+
+
+
+
+
+
+  
+
+  </ion-list>
+
+</ion-content>

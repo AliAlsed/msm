@@ -1,0 +1,47 @@
+
+    <ion-header translucent>
+        
+        <ion-toolbar color="primary">
+      <ion-title slot="end"> <h4>الدرجات</h4> </ion-title>
+  <ion-buttons  (click)="gotohome()">
+    <ion-icon name="arrow-round-back" slot="start">
+    </ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+  </ion-header>
+
+  
+  <ion-content>
+  
+      <ion-card color="primary">
+          <ion-card-header style="text-align: center">
+              
+              <ion-card-title> <h4>قائمة الدرجات </h4></ion-card-title>
+            </ion-card-header>
+      <div class="col-md-12" style="direction: rtl">
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-danger ">
+                  <thead class="text-danger">
+
+                         
+                    <th>المادة </th>
+                    <th>نوع الامتحان</th>
+                    <th>الدرجة </th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let mark of markData">
+
+                      <td>{{mark.course}}</td>
+                      <td>{{mark.type}}</td>
+                      <td>{{mark.degree}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+      </div>
+      </ion-card>
+
+  </ion-content>
+  

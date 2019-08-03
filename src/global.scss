@@ -1,0 +1,80 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+:root {
+    --main-bg-color: #ff5e00;
+    --main-se-color: #e45a1b;
+    --white-color: #fff;
+}
+.default-color {
+    color: var(--main-bg-color);
+}
+
+.default-bg-color {
+    background-color: var(--main-bg-color);
+}
+
+.btn.btn-danger {
+    color: var(--white-color);
+    background-color: var(--main-bg-color);
+    border-color: var(--main-bg-color);
+    box-shadow: unset;
+}
+
+body,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+tr,
+td,
+span {
+    font-family: 'Cairo', sans-serif;
+}
+
+
+
+
+
+	
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+    background: #eee; 
+}
+th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+}
+td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+}
+
+
+

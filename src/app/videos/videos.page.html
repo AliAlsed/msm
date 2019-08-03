@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    
+
+
+    <ion-title slot="end"> <h4>الفيديو</h4> </ion-title>
+  <ion-buttons  (click)="gotohome()">
+    <ion-icon name="arrow-round-back" slot="start">
+    </ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content >
+
+ 
+  <ion-card *ngFor="let item of videosData" >
+      <ion-card-header>
+        <ion-card-title>     <h4 class="card-title" style="text-align: center;"> {{item.title}}</h4>   </ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <youtube-player  class="card-img-top"  [videoId]="youtube_parser(item.link)"  >
+            </youtube-player>
+           
+            
+      
+      </ion-card-content>
+
+    </ion-card>
+   
+
+</ion-content>

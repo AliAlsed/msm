@@ -1,0 +1,88 @@
+
+<ion-header>
+    
+
+    <ion-toolbar color="primary" style="text-align: center;">
+      <ion-title>
+       <h4>
+        مدرستي
+        </h4> 
+       </ion-title>
+    </ion-toolbar>
+  
+  </ion-header>
+   
+  
+
+  
+  
+  <ion-content padding>
+
+      <div  style="text-align: center;">
+          <img   width=200px  hight= 200px src="../../assets/imgs/school.svg" />
+      </div>
+
+<br>
+<br>
+    <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)"  style= "direction:rtl"  >
+      <ion-item>
+
+        <div class="input-group mb-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input type="text" class="form-control font-weight-bold" style="font-size:20px" formControlName="email" placeholder="البريد الألكتروني" aria-label="email" aria-describedby="basic-addon1">
+          </div>
+
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+   <br>
+
+      <ion-item>
+        <div class="input-group mb-1">
+            <div class="input-group-append">
+              <span class="input-group-text"> <ion-icon name="key"></ion-icon>  </span>
+            </div>
+           
+            <input type="password" name=""  style="font-size:20px" formControlName="password" required   class="form-control input_pass font-weight-bold" value="" placeholder="كلمة السر">
+    
+          </div>
+
+
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <br>
+      
+      <div text-center>
+      <ion-button   class="submit-btn" type="submit"  [disabled]="!validations_form.valid" >
+<h6>
+    تسجيل دخول
+</h6>
+        
+      
+      </ion-button>
+   </div>
+      <label class="error-message">{{errorMessage}}</label>
+    </form>
+    
+  
+  
+  
+  
+    
+    
+  
+  </ion-content>
+  
