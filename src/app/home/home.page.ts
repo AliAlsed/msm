@@ -3,8 +3,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NavController, ModalController, LoadingController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
-const STORAGE_KEY1 = 'local_user';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,7 +13,7 @@ export class HomePage {
   constructor( private navCtrl: NavController, 
     private authService: AuthenticateService,
     public loadingController: LoadingController,
-    @Inject(SESSION_STORAGE) private storage: StorageService,
+  
   ) {
     
     }
@@ -67,5 +65,12 @@ export class HomePage {
   gotovideos() { this.showLoader('videos'); }
   gotobus() { this.showLoader('bus'); }
   gotopenalty() { this.showLoader('penalty'); }
+
+  gotobehavior() { this.showLoader('behavior'); }
+  gotoexam() { this.showLoader('exam'); }
+  gotoinfo() { this.showLoader('info'); }
+  gotoholiday() { this.showLoader('holiday'); }
+  gototeacher() { this.showLoader('teacher'); }
+
 
 }

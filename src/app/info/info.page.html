@@ -1,0 +1,66 @@
+
+
+
+<ion-header translucent >
+    <ion-toolbar color="primary" >
+      
+  
+      <ion-title slot="end"> <h4>  معلومات المدرسة </h4> </ion-title>
+      <ion-buttons  (click)="gotohome()">
+        <h4>
+            <ion-icon name="arrow-round-back" slot="start">
+              </ion-icon>
+        </h4>
+     
+      </ion-buttons>
+  
+      
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content>
+  
+  
+    <ion-list *ngFor="let info of infoData">
+  
+  
+      <ion-item>
+        
+        <ion-badge color="tertiary"      slot="end"  style="font-size:8px">
+         <h5> أسم المدير : {{info.director_name}} </h5>
+        </ion-badge>
+      </ion-item>
+  
+  
+      <ion-item>
+     
+        <ion-badge color="tertiary" slot="end" style="font-size:8px">
+         <h5>
+        تاريخ التأسيس : {{info.date}}
+        </h5>
+        </ion-badge>
+      </ion-item>
+  
+      
+  
+  
+      <ion-item>
+       
+        <ion-badge color="tertiary"  slot="end"  style="font-size:8px">
+         <h5> نبذة عن  المدرسة : {{info.school_profile}}  </h5>
+        </ion-badge>
+      </ion-item>
+  
+  
+  
+  
+  
+  
+  
+    
+  
+    </ion-list>
+  
+  </ion-content>
+  

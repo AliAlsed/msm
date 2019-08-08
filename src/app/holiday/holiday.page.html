@@ -1,0 +1,63 @@
+
+    <ion-header translucent >
+        <ion-toolbar color="primary" >
+          
+  
+          <ion-title slot="end"> <h4>  العطل </h4> </ion-title>
+          <ion-buttons  (click)="gotohome()">
+            <h4>
+                <ion-icon name="arrow-round-back" slot="start">
+                  </ion-icon>
+            </h4>
+         
+          </ion-buttons>
+  
+          
+        </ion-toolbar>
+      </ion-header>
+  
+  <ion-content>
+  
+      <ion-card color="primary">
+        
+
+          <ion-card-header style="text-align: center">
+            
+              <ion-card-title> <h4>أيام العطل </h4></ion-card-title>
+            </ion-card-header>
+         
+      <div class="col-md-12" style="direction: rtl">
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-danger ">
+                  <thead class="text-danger">
+                      <th>
+                          <h5>
+                             المناسبة
+                            </h5>
+                          </th>
+                <th>
+                 <h5>
+                     التاريخ
+                   </h5>
+                 </th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hol of holidayData">
+                 
+                  <td><h5> {{hol.name}}</h5></td>
+                  <td><h5>{{hol.date}}</h5></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  </div>
+  
+    </ion-card>
+   
+  
+  
+  
+  </ion-content>
+  

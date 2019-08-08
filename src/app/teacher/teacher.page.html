@@ -1,0 +1,81 @@
+<ion-app>
+
+
+
+    <ion-header translucent>
+      <ion-toolbar color="primary">
+          <ion-title slot="end"> <h4>الكادر التدريسي</h4> </ion-title>
+          <H4>
+              <ion-buttons  (click)="gotohome()">
+                  <ion-icon name="arrow-round-back" slot="start">
+                  </ion-icon>
+                </ion-buttons>
+          </H4>
+          
+      </ion-toolbar>
+    </ion-header>
+
+    
+  
+ 
+
+    <ion-content>
+        <br>
+        <br>
+        
+        
+      <ion-card color="primary">
+          <ion-card-header style="text-align: center">
+              
+              <ion-card-title> <h4>    معلومات  الكادر التدريسي </h4></ion-card-title>
+            </ion-card-header>
+          <div class="col-md-12" style="direction: rtl">
+             
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-danger ">
+                  
+                  <thead class="text-danger">
+    
+    
+    
+    
+                      <th> ألاسم</th>
+                      <th>الوظيفة</th>
+                      <th>الاختصاص</th>
+                      <th>البريد إلكتروني</th>
+
+
+                    </thead>
+                    <tbody>
+                      
+                      
+                      <tr *ngFor="let tch of teacherData">
+                          <td>{{tch.fullName}}</td>
+                          <td>{{tch.role}}</td>
+                          <td>{{tch.specialization}}</td>
+                          <td>{{tch.email}}</td>
+                        </tr>
+
+                      </tbody>
+
+
+                  </table>
+                </div>
+             
+    
+            </div>
+          </div>
+        
+    </ion-card>
+      </ion-content>
+  
+  
+  
+  
+    
+    
+  
+  
+  
+  </ion-app>

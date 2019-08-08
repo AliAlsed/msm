@@ -1,0 +1,58 @@
+
+    <ion-header translucent >
+        <ion-toolbar color="primary" >
+          
+  
+          <ion-title slot="end"> <h4>  سلوك ومستوى العلمي للطالب </h4> </ion-title>
+          <ion-buttons  (click)="gotohome()">
+            <h4>
+                <ion-icon name="arrow-round-back" slot="start">
+                  </ion-icon>
+            </h4>
+         
+          </ion-buttons>
+  
+          
+        </ion-toolbar>
+      </ion-header>
+  
+  <ion-content>
+  
+      <ion-card color="primary">
+         
+      <div class="col-md-12" style="direction: rtl">
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-danger ">
+                  <thead class="text-danger">
+                      <th>
+                          <h5>
+                             السلوك
+                            </h5>
+                          </th>
+                <th>
+                 <h5>
+                    مستوى الطالب
+                   </h5>
+                 </th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let bah of bahaviorData">
+                 
+                  <td><h5> {{bah.description}}</h5></td>
+                  
+                  <td><h5>{{bah.type}}</h5></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  </div>
+  
+    </ion-card>
+   
+  
+  
+  
+  </ion-content>
+  

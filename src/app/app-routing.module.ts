@@ -20,7 +20,12 @@ const routes: Routes = [
   { path: 'notification', loadChildren: './notification/notification.module#NotificationPageModule' },
   { path: 'money', loadChildren: './money/money.module#MoneyPageModule' },
   { path: 'bus', loadChildren: './bus/bus.module#BusPageModule' },
-  { path: 'penalty', loadChildren: './penalty/penalty.module#PenaltyPageModule' }
+  { path: 'penalty', loadChildren: './penalty/penalty.module#PenaltyPageModule' },
+  { path: 'behavior', loadChildren: './behavior/behavior.module#BehaviorPageModule' },
+  { path: 'teacher', loadChildren: './teacher/teacher.module#TeacherPageModule' },
+  { path: 'exam', loadChildren: './exam/exam.module#ExamPageModule' },
+  { path: 'holiday', loadChildren: './holiday/holiday.module#HolidayPageModule' },
+  { path: 'info', loadChildren: './info/info.module#InfoPageModule' }
 ];
 
 @NgModule({

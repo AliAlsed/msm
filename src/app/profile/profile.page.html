@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     
-    <ion-title slot="end"> <h4>المعلومات </h4> </ion-title>
+    <ion-title slot="end"> <h4>المعلومات الشخصية</h4> </ion-title>
   <ion-buttons  (click)="gotohome()">
     <ion-icon name="arrow-round-back" slot="start">
     </ion-icon>
@@ -14,6 +14,10 @@
 
   <ion-list *ngFor="let profile of myprofileData">
 
+      <img style="background-size: auto; width: 200px;height: 200px; border-radius: 200% " src="{{profile.image}}">
+
+       
+      
 
     <ion-item>
       <ion-label>
