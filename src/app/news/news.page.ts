@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
+import { NetworkService } from '../network.service';
 @Component({
   selector: 'app-news',
   templateUrl: './news.page.html',
@@ -12,9 +13,11 @@ export class NewsPage implements OnInit {
   newsList: Observable<any[]>;
   newsData: any;
   constructor(private navCtrl: NavController,
+    private network: NetworkService,
     private firestoreService: FirebaseService,) { }
 
   ngOnInit() {
+    this.network.getCurrentNetworkStatus();
     this.newsList = this.firestoreService.getFirestoreData('newsList');
   }
 

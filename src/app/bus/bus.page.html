@@ -26,36 +26,42 @@
 
 
     <ion-item>
-      <ion-label>
+      <!-- <ion-label>
         <img width="70" height="70" src="../../assets/imgs/identification.svg" />
       </ion-label>
       <ion-badge color="tertiary"      slot="end"  style="font-size:8px">
        <h5> أسم السائق : {{bus.name}} </h5>
-      </ion-badge>
+      </ion-badge> -->
+           <ion-icon slot="end" name="person" color="primary"></ion-icon>
+      <ion-label> <h4>{{bus.name}} </h4>  </ion-label>
     </ion-item>
 
 
     <ion-item>
-      <ion-label>
+      <!-- <ion-label>
         <img width="70" height="70" src="../../assets/imgs/smartphone.svg" />
       </ion-label>
       <ion-badge color="tertiary" slot="end" style="font-size:8px">
        <h5>
       هاتف السائق : {{bus.mobile}}
       </h5>
-      </ion-badge>
+      </ion-badge> -->
+      <ion-icon slot="end" name="call" color="primary"></ion-icon>
+      <ion-label> <h4>{{bus.mobile}} </h4>  </ion-label>
     </ion-item>
 
     
 
 
     <ion-item>
-      <ion-label>
+      <!-- <ion-label>
         <img  width="70" height="70" src="../../assets/imgs/carnum.svg" />
       </ion-label>
       <ion-badge color="tertiary"  slot="end"  style="font-size:8px">
        <h5> رقم السيارة : {{bus.carnum}}  </h5>
-      </ion-badge>
+      </ion-badge> -->
+      <ion-icon slot="end" name="car" color="primary"></ion-icon>
+      <ion-label> <h4>{{bus.carnum}} </h4>  </ion-label>
     </ion-item>
 
 

@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 @Component({
   selector: 'app-marks',
@@ -16,10 +17,12 @@ export class MarksPage implements OnInit {
 
   constructor(private navCtrl: NavController,
     private firestoreService: FirebaseService,
+    public network: NetworkService,
       @Inject(SESSION_STORAGE) private storage: StorageService,) { }
 
 
       ngOnInit() {
+        this.network.getCurrentNetworkStatus();
         this.extracttable();
       }
     

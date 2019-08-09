@@ -5,13 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TablesPage } from './tables.page';
-import { PinchZoomModule } from 'ngx-pinch-zoom';
+import { ProfilePage } from './profile.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TablesPage
+    component: ProfilePage
   }
 ];
 
@@ -20,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    PinchZoomModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TablesPage]
+  declarations: [ProfilePage]
 })
-export class TablesPageModule {}
+export class ProfilePageModule {}

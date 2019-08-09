@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
+import { NetworkService } from '../network.service';
 
 @Component({
   selector: 'app-notification',
@@ -14,9 +15,12 @@ export class NotificationPage implements OnInit {
   notiList: Observable<any[]>;
   notiData: any;
   constructor(private navCtrl: NavController,
-    private firestoreService: FirebaseService,) { }
+    private firestoreService: FirebaseService,
+    private network : NetworkService
+    ) { }
 
     ngOnInit() {
+      this.network.getCurrentNetworkStatus();
       this.notiList = this.firestoreService.getFirestoreData('notifyList');
     }
     ngAfterViewInit() {

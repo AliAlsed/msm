@@ -10,6 +10,8 @@ import { FirebaseService } from '../firebase.service';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 const STORAGE_KEY1 = 'local_user';
 const STORAGE_KEY2 = 'info';
+import { ToastController } from '@ionic/angular';
+import { NetworkService } from '../network.service';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +31,12 @@ export class LoginPage implements OnInit {
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private firestoreService: FirebaseService,
     private router: Router,
-
-
+    public toastController: ToastController,
+    public network: NetworkService
   ) { }
 
   ngOnInit() {
-
+    this.network.getCurrentNetworkStatus();
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -78,10 +80,18 @@ export class LoginPage implements OnInit {
        this.navCtrl.navigateForward('/home');
       // this.router.navigate(['home']);
      }, err => {
-       this.errorMessage = err.message;
+      //  this.errorMessage = err.message;
+      this.presentToast();
      })
     }
     }
-      
+    async presentToast() {
+      const toast = await this.toastController.create({
+        message: ' معلومات المستخدم غير صحيحه',
+        cssClass: 'mytoast',
+        duration: 2000
+      });
+      toast.present();
+    }
 
 }

@@ -23,7 +23,9 @@
               <h4 class="card-title ">الجدول الاسبوعي</h4>
     
                   <div class="card-body" *ngFor="let item of tableData" >
-                      <img class="card-img-top img-adjusted" src="{{item.image}}">
+                      <pinch-zoom>
+                          <img class="card-img-top img-adjusted" src="{{item.image}}">
+                        </pinch-zoom>
                   </div>
              
 

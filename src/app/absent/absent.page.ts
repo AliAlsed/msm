@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 @Component({
   selector: 'app-absent',
@@ -14,10 +15,14 @@ export class AbsentPage implements OnInit {
   absentData: any;
 
   constructor(private navCtrl: NavController,
-    private firestoreService: FirebaseService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+              private firestoreService: FirebaseService,
+              @Inject(SESSION_STORAGE) private storage: StorageService,
+              public network: NetworkService
+
+      ) { }
 
   ngOnInit() {
+    this.network.getCurrentNetworkStatus();
     this.extracttable();
   }
 

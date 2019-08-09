@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "729190915101",
+    "firebase_url": "https://school-a53e4.firebaseio.com",
+    "project_id": "school-a53e4",
+    "storage_bucket": "school-a53e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729190915101:android:3ccae7a744710dc7",
+        "android_client_info": {
+          "package_name": "startup.marscoders.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729190915101-p12rmcab5h93rnjnfc5870jb2p2e6km9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzn9ukKnWp2Q0ljG3oRyu1qDJpsT6ej0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729190915101-p12rmcab5h93rnjnfc5870jb2p2e6km9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

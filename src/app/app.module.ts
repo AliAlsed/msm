@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { AuthenticateService } from './services/authentication.service';
 import * as firebase from 'firebase';
-
+import {Network} from '@ionic-native/network/ngx';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -30,6 +30,8 @@ import { FirebaseService } from './firebase.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { FCM } from '@ionic-native/fcm/ngx';
+
 firebase.initializeApp(environment.firebase);
 
 
@@ -54,8 +56,10 @@ firebase.initializeApp(environment.firebase);
   providers: [
     StatusBar,
     SplashScreen,
-    AuthenticateService,    //authen service
+    AuthenticateService,  
+    Network, //authen service
     DatePipe, 
+    FCM,
     FirebaseService, 
     AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
