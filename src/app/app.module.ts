@@ -1,38 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Firebase } from '@ionic-native/firebase/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Firebase } from '@ionic-native/firebase/ngx';
-// authen
-import { environment } from 'src/environments/environment';
-import { AuthenticateService } from './services/authentication.service';
-import * as firebase from 'firebase';
-import {Network} from '@ionic-native/network/ngx';
-
-
-//import { AngularFireModule } from '@angular/fire/';
+import { AngularFireModule } from '@angular/fire/';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FirestoreSettingsToken, AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
-//import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { DatePipe } from '@angular/common';
+
+// authen
+import { environment } from '../environments/environment';
+import { AuthenticateService } from './services/authentication.service';
+import {Network} from '@ionic-native/network/ngx';
+
+import { ReactiveFormsModule } from '@angular/forms';
 import { FirebaseService } from './firebase.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import * as firebase from 'firebase/app';
 
-firebase.initializeApp(environment.firebase);
 
+firebase.initializeApp(environment.firebase)
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +46,7 @@ firebase.initializeApp(environment.firebase);
     StorageServiceModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+
  
    
   ],
@@ -61,7 +59,6 @@ firebase.initializeApp(environment.firebase);
     DatePipe, 
     FCM,
     FirebaseService, 
-    AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app'
+
+
 import { AngularFireDatabase } from '@angular/fire/database';
 import { profile } from './model/profile.interface';
+import * as firebase from 'firebase/app';
 
 
 @Injectable({

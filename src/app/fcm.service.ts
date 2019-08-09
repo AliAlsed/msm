@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Firebase } from '@ionic-native/firebase/ngx';
+<<<<<<< Updated upstream
 import { AngularFireDatabase } from '@angular/fire/database';
+=======
+import { AngularFirestore } from '@angular/fire/firestore';
+>>>>>>> Stashed changes
 
 @Injectable({
   providedIn: 'root'
