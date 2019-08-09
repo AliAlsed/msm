@@ -1,16 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
-import { Router } from '@angular/router';
-import { AuthenticateService } from '../services/authentication.service';
-
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
 import { profile } from '../model/profile.interface';
