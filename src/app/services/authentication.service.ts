@@ -1,16 +1,12 @@
 import { Injectable } from "@angular/core";
 import * as firebase from 'firebase/app';
-import { FCM } from '@ionic-native/fcm/ngx';
-
-import { FcmService } from '../fcm.service';
 import { AngularFirestore } from '@angular/fire/firestore';
  
 @Injectable()
 export class AuthenticateService {
   // this.todoCollectionRef = this.afs.collection('todos');
 
-constructor(private afs: AngularFirestore,
-   private fcm: FcmService){}
+constructor(private afs: AngularFirestore){}
  
   registerUser(value){
    return new Promise<any>((resolve, reject) => {
@@ -18,22 +14,17 @@ constructor(private afs: AngularFirestore,
      .then(    
        res => resolve(res),
        err => reject(err))
-   }).then(()=>{
-    // this.addToken();
    });
   }
  
   loginUser(value){
-    let mymail = value.email;
     return new Promise<any>((resolve, reject) => {
      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
      .then(
        res => resolve(res),
        err => reject(err))
 
-   }).then(()=>{
-    this.addToken( mymail );
-   });
+   })
 
   }
  
@@ -55,13 +46,5 @@ constructor(private afs: AngularFirestore,
     return firebase.auth().currentUser;
   }
 
-  addToken(mail:string){
-    // this.fcm.getToken().then((token) => {
-    //   console.log(token);
-    //   // this.db.list(`token/${firebase.auth().currentUser.uid}`).set('token', token);
-    //   return this.afs.collection('studentList').doc(mail).update({'token': token});
-
-    // });
-    this.fcm.getToken(mail);
-  }
+ 
 }

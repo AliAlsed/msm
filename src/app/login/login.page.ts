@@ -12,6 +12,9 @@ const STORAGE_KEY1 = 'local_user';
 const STORAGE_KEY2 = 'info';
 import { ToastController } from '@ionic/angular';
 import { NetworkService } from '../network.service';
+import { profile } from '../model/profile.interface';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { FcmService } from '../fcm.service';
 
 @Component({
   selector: 'app-login',
@@ -19,20 +22,22 @@ import { NetworkService } from '../network.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  profile: Observable<any>;
-  
+  profile: Observable<profile>;
   validations_form: FormGroup;
   errorMessage: string = '';
+  logData: profile ;
   constructor(
 
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
+    private db: AngularFireDatabase,
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private firestoreService: FirebaseService,
     private router: Router,
     public toastController: ToastController,
-    public network: NetworkService
+    public network: NetworkService,
+    private fcm: FcmService
   ) { }
 
   ngOnInit() {
@@ -64,19 +69,22 @@ export class LoginPage implements OnInit {
  
   savedata()
   {
-    this.profile= this.firestoreService.getmyprofileDetail('studentList',this.storage.get(STORAGE_KEY1).email).valueChanges();
-    this.profile.subscribe(data => {
-      this.storage.set(STORAGE_KEY2, data);                             // store inforamation of student
-    });
+
   }
   loginUser(value){
     if (value.email != "admin@admin.com"){
     console.log(value.email);
     this.authService.loginUser(value).then(res => {
        this.storage.set(STORAGE_KEY1, this.authService.userDetails());
-       this.savedata();
-      console.log(this.authService.userDetails());
+       this.profile= this.firestoreService.getmyprofileDetail('studentList',this.storage.get(STORAGE_KEY1).email).valueChanges();
+       this.profile.subscribe(data => {
+         this.storage.set(STORAGE_KEY2, data);   // store inforamation of student
+         console.log(data['fullName']);  
+         console.log(data);         
+         this.fcm.getToken(data['stage'],data['division'],data['fullName']);
+       });
        this.errorMessage = "";
+       console.log(this.logData);
        this.navCtrl.navigateForward('/home');
       // this.router.navigate(['home']);
      }, err => {
