@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { Platform } from '@ionic/angular';
 import { Firebase } from '@ionic-native/firebase/ngx';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
