@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../firebase.service';
+import { NetworkService } from '../network.service';
 
 @Component({
   selector: 'app-videos',
@@ -13,9 +14,11 @@ export class VideosPage implements OnInit {
    videosList: Observable<any[]>;
    videosData: any;
     constructor(private navCtrl: NavController,
-      private firestoreService: FirebaseService,) { }
+      private firestoreService: FirebaseService,
+      private network: NetworkService ) { }
   
     ngOnInit() {
+      this.network.getCurrentNetworkStatus();
       this.videosList = this.firestoreService.getFirestoreData('videosList');
     }
   

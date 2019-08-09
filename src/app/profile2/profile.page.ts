@@ -25,13 +25,12 @@ const STORAGE_KEY1 = 'local_user';
 })
 export class ProfilePage implements OnInit {
 
-
   constructor(
-    private firestoreService: FirebaseService,
-    private navCtrl: NavController,
-    private network: NetworkService,
-    @Inject(SESSION_STORAGE) private storage: StorageService,
-    ) { }
+     private firestoreService: FirebaseService,
+     private navCtrl: NavController,
+     private network: NetworkService,
+     @Inject(SESSION_STORAGE) private storage: StorageService,
+     ) { }
 
      spinners: any;
   
@@ -48,6 +47,8 @@ export class ProfilePage implements OnInit {
     this.network.getCurrentNetworkStatus();
     //const songId: string = this.route.snapshot.paramMap.get('id');
     this.profile= this.firestoreService.getmyprofileDetail('studentList',this.storage.get(STORAGE_KEY1).email).valueChanges();
+    
+  
   }
 
 

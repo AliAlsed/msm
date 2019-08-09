@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { FirebaseService } from '../firebase.service';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 @Component({
   selector: 'app-bus',
@@ -14,10 +15,12 @@ export class BusPage implements OnInit {
   busList: Observable<any[]>;
   busData: any;
   constructor(private navCtrl: NavController,
-    private firestoreService: FirebaseService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+              private firestoreService: FirebaseService,
+              public network: NetworkService,
+              @Inject(SESSION_STORAGE) private storage: StorageService, ) { }
 
       ngOnInit() {
+        this.network.getCurrentNetworkStatus();
         this.extracttable();
       }
     

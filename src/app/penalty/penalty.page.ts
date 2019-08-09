@@ -3,6 +3,7 @@ import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
+import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 @Component({
   selector: 'app-penalty',
@@ -16,9 +17,11 @@ export class PenaltyPage implements OnInit {
 
   constructor(private navCtrl: NavController,
     private firestoreService: FirebaseService,
+    private network : NetworkService,
       @Inject(SESSION_STORAGE) private storage: StorageService,) { }
 
   ngOnInit() {
+    this.network.getCurrentNetworkStatus();
     this.extracttable();
   }
 

@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 import { Observable } from 'rxjs';
+import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 
 @Component({
@@ -17,12 +18,14 @@ export class HomeworksPage implements OnInit {
 
 
   constructor(private navCtrl: NavController,
-    private firestoreService: FirebaseService,
-     @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+              private firestoreService: FirebaseService,
+              public network: NetworkService,
+              @Inject(SESSION_STORAGE) private storage: StorageService,) { }
 
   ngOnInit() {
-   console.log( this.storage.get(STORAGE_KEY2).tag);         //  retrive the information of user
-   this.extracthomework();
+    this.network.getCurrentNetworkStatus();
+    console.log( this.storage.get(STORAGE_KEY2).tag);         //  retrive the information of user
+    this.extracthomework();
   }
 
 

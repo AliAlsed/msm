@@ -28,7 +28,11 @@
             <div class="table-responsive">
                 <table class="table table-danger ">
                 <thead class="text-danger">
-              
+              <th>
+                <h5>
+                المادة 
+              </h5>
+              </th>
               <th>
                <h5> التاريخ
                  </h5>
@@ -36,7 +40,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let absent of absentData">
-               
+                <td>
+                <h5>
+                    {{absent.course}}
+                </h5>  
+                </td>
                 <td><h5>{{absent.date}}</h5></td>
               </tr>
             </tbody>
