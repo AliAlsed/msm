@@ -27,7 +27,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
+      this.notificationSetup();
      if(this.storage.get(STORAGE_KEY1).email == null) { // if not login
         this.navCtrl.navigateForward('/');
         
