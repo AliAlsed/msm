@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Firebase } from '@ionic-native/firebase/ngx';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FcmService {
   constructor(private firebase: Firebase,
-    private afs: AngularFirestore,
-    private platform: Platform) { }
+              private db: AngularFireDatabase,
+              private platform: Platform) { }
 
-  async getToken(email) {
+  async getToken(stage,division,fullName) {
 
     let token;
 
@@ -23,20 +23,17 @@ export class FcmService {
       token = await this.firebase.getToken();
       await this.firebase.grantPermission();
     }
-    this.saveToken(token, email);
+    this.saveToken(token, stage, division, fullName);
   }
 
-  private saveToken(token,email) {
+  private saveToken(token,stage,division,fullName) {
     if (!token) return;
-    const devicesRef = this.afs.collection('studentList');
 
     const data = {
       token
     };
-
-    return devicesRef.doc(email).update({
-      'token': token
-    });
+    this.db.list(`studentList/${stage}/${division}/${fullName}`)
+    .set('token', token);
   }
 
   onNotifications() {
