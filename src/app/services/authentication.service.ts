@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import * as firebase from 'firebase/app';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFirestore } from 'angularfire2/firestore';
+
 import { FcmService } from '../fcm.service';
+import { AngularFirestore } from '@angular/fire/firestore';
  
 @Injectable()
 export class AuthenticateService {

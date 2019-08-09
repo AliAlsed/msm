@@ -1,7 +1,7 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { NavController, LoadingController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 
 import { Router } from '@angular/router';

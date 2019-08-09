@@ -15,14 +15,11 @@ import { AuthenticateService } from './services/authentication.service';
 import * as firebase from 'firebase';
 import {Network} from '@ionic-native/network/ngx';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 
 //import { AngularFireModule } from '@angular/fire/';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FirestoreSettingsToken } from '@angular/fire/firestore';
+import { FirestoreSettingsToken, AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 //import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
@@ -31,6 +28,8 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 firebase.initializeApp(environment.firebase);
 

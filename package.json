@@ -31,7 +31,6 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "angular-webstorage-service": "^1.0.2",
-    "angularfire2": "^5.2.1",
     "bootstrap": "^4.3.1",
     "cordova-android": "8.0.0",
     "cordova-browser": "6.0.0",
