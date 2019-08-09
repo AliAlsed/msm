@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { Firebase } from '@ionic-native/firebase/ngx';
 // authen
 import { environment } from 'src/environments/environment';
 import { AuthenticateService } from './services/authentication.service';
@@ -56,6 +56,7 @@ firebase.initializeApp(environment.firebase);
   providers: [
     StatusBar,
     SplashScreen,
+    Firebase,
     AuthenticateService,  
     Network, //authen service
     DatePipe, 
