@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 import { FcmService } from './fcm.service';
+import { FCM } from '@ionic-native/fcm/ngx';
 const STORAGE_KEY1 = 'local_user';
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
+    private Fcm:FCM,
     private fcm: FcmService,
     public toastController: ToastController,
     private statusBar: StatusBar,
@@ -42,6 +44,7 @@ export class AppComponent {
     });
   }
   private notificationSetup() {
+    this.Fcm.subscribeToTopic('event');
 		this.fcm.onNotifications().subscribe(
 		  (event) => {
 			if (this.platform.is('ios')) {
