@@ -35,13 +35,7 @@ export class MoneyPage implements OnInit {
           console.log(data);
     
         });
-        this.payList = this.firestoreService.getFirestoreData2(
-          'payList', 'tag', this.storage.get(STORAGE_KEY2).tag, 'name', this.storage.get(STORAGE_KEY2).fullName      );
-        this.payList.subscribe(data => {
-          this.payData = (data);
-          console.log(data);
-    
-        });
+        
 
       }
 
