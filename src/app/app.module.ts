@@ -4,7 +4,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Firebase } from '@ionic-native/firebase/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/';
@@ -12,24 +11,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { DatePipe } from '@angular/common';
-
-// authen
 import { environment } from '../environments/environment';
 import { AuthenticateService } from './services/authentication.service';
-import {Network} from '@ionic-native/network/ngx';
-
+import { Network } from '@ionic-native/network/ngx';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FirebaseService } from './firebase.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
-
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FCM } from '@ionic-native/fcm/ngx';
-import * as firebase from 'firebase/app';
-
-
-firebase.initializeApp(environment.firebase)
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,26 +29,22 @@ firebase.initializeApp(environment.firebase)
     IonicModule.forRoot(),
     NgxYoutubePlayerModule.forRoot(),
     AppRoutingModule,
-    ReactiveFormsModule, //add
+    ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule , //authen fire and firestore
+    AngularFireAuthModule,
     StorageServiceModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule,
-
- 
-   
+    AngularFireDatabaseModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Firebase,
-    AuthenticateService,  
-    Network, //authen service
-    DatePipe, 
+    AuthenticateService,
+    Network,
+    DatePipe,
     FCM,
-    FirebaseService, 
+    FirebaseService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

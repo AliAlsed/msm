@@ -1,5 +1,4 @@
-import { Component , Inject} from '@angular/core';
-
+import { Component, Inject } from '@angular/core';
 import { Platform, NavController, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -15,13 +14,12 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private Fcm:FCM,
+    private Fcm: FCM,
     private fcm: FcmService,
     public toastController: ToastController,
     private statusBar: StatusBar,
     @Inject(SESSION_STORAGE) private storage: StorageService,
-    private navCtrl: NavController,
-  ) {
+    private navCtrl: NavController) {
     this.initializeApp();
   }
 
@@ -30,29 +28,29 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.notificationSetup();
-     if(this.storage.get(STORAGE_KEY1).email == null) { // if not login
+      if (this.storage.get(STORAGE_KEY1).email == null) { // if not login
         this.navCtrl.navigateForward('/');
-        
-      } else { 
-        
+
+      } else {
+
         this.navCtrl.navigateForward('/home');
-     /* this will also work
-      this.navCtrl.goRoot('/app');
-     */
-     }
+        /* this will also work
+         this.navCtrl.goRoot('/app');
+        */
+      }
 
     });
   }
   private notificationSetup() {
     this.Fcm.subscribeToTopic('event');
-		this.fcm.onNotifications().subscribe(
-		  (event) => {
-			if (this.platform.is('ios')) {
-			  this.presentToast(event.aps.alert);
-			} else {
-			  this.presentToast(event.body);
-			}
-		});
+    this.fcm.onNotifications().subscribe(
+      (event) => {
+        if (this.platform.is('ios')) {
+          this.presentToast(event.aps.alert);
+        } else {
+          this.presentToast(event.body);
+        }
+      });
   }
   private async presentToast(message) {
     const toast = await this.toastController.create({
@@ -61,7 +59,4 @@ export class AppComponent {
     });
     toast.present();
   }
-
-
-
 }
