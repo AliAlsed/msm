@@ -5,13 +5,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 import { FcmService } from './fcm.service';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { Router } from '@angular/router';
+
 const STORAGE_KEY1 = 'local_user';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent{
+
   constructor(
+    private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private Fcm: FCM,
@@ -25,20 +30,9 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
       this.notificationSetup();
-      if (this.storage.get(STORAGE_KEY1).email == null) { // if not login
-        this.navCtrl.navigateForward('/');
-
-      } else {
-
-        this.navCtrl.navigateForward('/home');
-        /* this will also work
-         this.navCtrl.goRoot('/app');
-        */
-      }
-
     });
   }
   private notificationSetup() {
