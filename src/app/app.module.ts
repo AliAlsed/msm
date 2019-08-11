@@ -20,6 +20,7 @@ import { FirebaseService } from './firebase.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FCM } from '@ionic-native/fcm/ngx';
+import {  AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +42,7 @@ import { FCM } from '@ionic-native/fcm/ngx';
     StatusBar,
     SplashScreen,
     AuthenticateService,
+    AuthGuard,
     Network,
     DatePipe,
     FCM,
