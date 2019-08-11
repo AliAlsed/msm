@@ -4,7 +4,6 @@ import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
 import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
 import { profile } from '../model/profile.interface';
-import { NgxUiLoaderService, Loader, SPINNER } from 'ngx-ui-loader';
 import { NetworkService } from '../network.service';
 const STORAGE_KEY1 = 'local_user';
 
@@ -15,49 +14,35 @@ const STORAGE_KEY1 = 'local_user';
 })
 export class ProfilePage implements OnInit {
 
-
   constructor(
     private firestoreService: FirebaseService,
     private navCtrl: NavController,
     private network: NetworkService,
     @Inject(SESSION_STORAGE) private storage: StorageService,
-    ) { }
+  ) { }
 
-     spinners: any;
-  
+  spinners: any;
+
   myprofileList: Observable<any[]>;
-  
- profile: Observable<profile>;
+
+  profile: Observable<profile>;
   myprofileData: any;
   temp: any;
-  
-
-
 
   ngOnInit() {
     this.network.getCurrentNetworkStatus();
     //const songId: string = this.route.snapshot.paramMap.get('id');
-    this.profile= this.firestoreService.getmyprofileDetail('studentList',this.storage.get(STORAGE_KEY1).email).valueChanges();
+    this.profile = this.firestoreService.getmyprofileDetail('studentList', this.storage.get(STORAGE_KEY1).email).valueChanges();
   }
-
-
 
   ngAfterViewInit() {
-
-   this.profile.subscribe(data => {
-    this.myprofileData = data;
-   this.myprofileData  = Array.of(this.myprofileData );              ///solution 
-  });
-
+    this.profile.subscribe(data => {
+      this.myprofileData = data;
+      this.myprofileData = Array.of(this.myprofileData);              ///solution 
+    });
   }
 
-
-  gotohome()
-  {
-
-      this.navCtrl.navigateForward('/home');
-    
-
+  gotohome() {
+    this.navCtrl.navigateForward('/home');
   }
-
 }

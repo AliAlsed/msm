@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-
-
 import { AngularFireDatabase } from '@angular/fire/database';
 import { profile } from './model/profile.interface';
 import * as firebase from 'firebase/app';
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,45 +11,36 @@ import * as firebase from 'firebase/app';
 export class FirebaseService {
 
   constructor(private db: AngularFireDatabase,
-     private firestore: AngularFirestore, 
-     private afAuth: AngularFireAuth,
-   
-     ) { }
+    private firestore: AngularFirestore,
+    private afAuth: AngularFireAuth) { }
 
-
-
-  getmyprofileDetail(colName: string,docName: string): AngularFirestoreDocument<profile> {  //// col.doc
-   return this.firestore.collection(colName).doc(docName);
+  getmyprofileDetail(colName: string, docName: string): AngularFirestoreDocument<profile> {  //// col.doc
+    return this.firestore.collection(colName).doc(docName);
   }
 
-
-  getFirestoreData(colName: string, property?: string, value?: string ) {
+  getFirestoreData(colName: string, property?: string, value?: string) {
     if (value == null || property == null) {
       return this.firestore.collection(colName).valueChanges();
     }
     else {
       return this.firestore.collection(colName, ref => {
         let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-        query = query.where(property, '==', value );
+        query = query.where(property, '==', value);
         return query;
       }).valueChanges();
     }
   }
 
 
-  getFirestoreData2(colName: string, property?: string, value?: string ,property2?: string, value2?: string) {
-    
-      return this.firestore.collection(colName, ref => {
-        let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-        query = query.where(property, '==', value).where( property2, '==', value2 );
-        return query;
-      }).valueChanges();
-  
+  getFirestoreData2(colName: string, property?: string, value?: string, property2?: string, value2?: string) {
 
-
+    return this.firestore.collection(colName, ref => {
+      let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      query = query.where(property, '==', value).where(property2, '==', value2);
+      return query;
+    }).valueChanges();
   }
-    
-     
+
   addFirestoreData(colName: string, dataObject: any, emailAsId: boolean) {
     let id = '';
     if (emailAsId) {
