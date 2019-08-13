@@ -1,67 +1,53 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Firebase } from '@ionic-native/firebase/ngx';
-// authen
-import { environment } from 'src/environments/environment';
-import { AuthenticateService } from './services/authentication.service';
-import * as firebase from 'firebase';
-import {Network} from '@ionic-native/network/ngx';
-
-
-//import { AngularFireModule } from '@angular/fire/';
+import { AngularFireModule } from '@angular/fire/';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FirestoreSettingsToken, AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
-//import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { DatePipe } from '@angular/common';
+import { environment } from '../environments/environment';
+import { AuthenticateService } from './services/authentication.service';
+import { Network } from '@ionic-native/network/ngx';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FirebaseService } from './firebase.service';
 import { StorageServiceModule } from 'angular-webstorage-service';
-
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-
-firebase.initializeApp(environment.firebase);
-
-
+import {  AuthGuard } from './auth.guard';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(),
     NgxYoutubePlayerModule.forRoot(),
     AppRoutingModule,
-    ReactiveFormsModule, //add
+    ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule , //authen fire and firestore
+    AngularFireAuthModule,
     StorageServiceModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule,
- 
-   
+    AngularFireDatabaseModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Firebase,
-    AuthenticateService,  
-    Network, //authen service
-    DatePipe, 
+    AuthenticateService,
+    AuthGuard,
+    Network,
+    DatePipe,
     FCM,
-    FirebaseService, 
-    AngularFirestore,
+    FirebaseService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+import { Storage } from '@ionic/storage';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
@@ -14,27 +14,37 @@ export class PenaltyPage implements OnInit {
 
   penList: Observable<any[]>;
   penData: any;
-
+  fullName: any;
+  tag: any;
   constructor(private navCtrl: NavController,
     private firestoreService: FirebaseService,
     private network : NetworkService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+    private storage: Storage,) 
+      { 
+        this.network.getCurrentNetworkStatus();
+        this.storage.get('info').then((val) => {
+          this.fullName = val['fullName'];
+          this.tag = val['tag'];
+         
+  
+
+        this.penList = this.firestoreService.getFirestoreData2(
+          'penaltyList', 'tag', this.tag, 'name', this.fullName);
+        this.penList.subscribe(data => {
+          this.penData = data;
+          console.log(data);
+    
+    
+        });
+    
+        });
+      }
 
   ngOnInit() {
-    this.network.getCurrentNetworkStatus();
-    this.extracttable();
+
   }
 
-  extracttable() {
-    this.penList = this.firestoreService.getFirestoreData2(
-      'penaltyList', 'tag', this.storage.get(STORAGE_KEY2).tag, 'name', this.storage.get(STORAGE_KEY2).fullName      );
-    this.penList.subscribe(data => {
-      this.penData = data;
-      console.log(data);
 
-
-    });
-  }
 
   gotohome()
   {

@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+import { Storage } from '@ionic/storage';
 import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 @Component({
@@ -13,25 +13,30 @@ const STORAGE_KEY2 = 'info';
 export class TablesPage implements OnInit {
   tableList: Observable<any[]>;
   tableData: any;
-
+  tag: any;
   constructor(private navCtrl: NavController,
     private network : NetworkService,
     private firestoreService: FirebaseService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+    private storage: Storage,) 
+      
+      { this.network.getCurrentNetworkStatus();
+        this.storage.get('info').then((val) => {
+          this.tag = val['tag'];
+
+
+        this.tableList = this.firestoreService.getFirestoreData('weeklyList', 'tag', this.tag);
+        this.tableList.subscribe(data => {
+          this.tableData = data;
+          console.log(data);
+        });
+    
+        });
+      }
 
   ngOnInit() {
-    this.network.getCurrentNetworkStatus();
-    this.extracttable();
+   
   }
 
-
-  extracttable() {
-    this.tableList = this.firestoreService.getFirestoreData('weeklyList', 'tag', this.storage.get(STORAGE_KEY2).tag);
-    this.tableList.subscribe(data => {
-      this.tableData = data;
-      console.log(data);
-    });
-  }
 
 
   gotohome()

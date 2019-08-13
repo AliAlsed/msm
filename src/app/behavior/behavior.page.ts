@@ -2,9 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
-
-const STORAGE_KEY2 = 'info';
+import { Storage } from '@ionic/storage';
+import { NetworkService } from '../network.service';
 
 @Component({
   selector: 'app-behavior',
@@ -15,25 +14,32 @@ export class BehaviorPage implements OnInit {
 
   bahaviorList: Observable<any[]>;
   bahaviorData: any;
-
+  fullName: any;
+  tag: any;
   constructor(private navCtrl: NavController,
     private firestoreService: FirebaseService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+    private storage: Storage,
+    public network: NetworkService) 
+    {
+      this.network.getCurrentNetworkStatus();
+    this.storage.get('info').then((val) => {
+      this.fullName = val['fullName'];
+      this.tag = val['tag'];
+     
 
-  ngOnInit() {
-    this.extracttable();
-  }
-
-  extracttable() {
-    this. bahaviorList = this.firestoreService.getFirestoreData2(
-      'attitudeList', 'tag', this.storage.get(STORAGE_KEY2).tag, 'name', this.storage.get(STORAGE_KEY2).fullName      );
-    this. bahaviorList.subscribe(data => {
-      this. bahaviorData = data;
-      console.log(data);
-
+        this. bahaviorList = this.firestoreService.getFirestoreData2('attitudeList', 'tag', this.tag, 'name', this.fullName);
+        this. bahaviorList.subscribe(data => {
+          this. bahaviorData = data;
+          console.log(data);
+    });
 
     });
+     }
+
+  ngOnInit() {
+    
   }
+
 
   gotohome()
   {

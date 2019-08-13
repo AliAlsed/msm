@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+import { Storage } from '@ionic/storage';
 import { NetworkService } from '../network.service';
 const STORAGE_KEY2 = 'info';
 @Component({
@@ -16,34 +16,45 @@ export class MoneyPage implements OnInit {
 
   payList: Observable<any>;
   payData: any;
-
+  fullName: any;
+  tag: any;
   constructor(private navCtrl: NavController,
     private firestoreService: FirebaseService,
     public network: NetworkService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
-
-      ngOnInit() {
+    private storage: Storage,) 
+      {
         this.network.getCurrentNetworkStatus();
-        this.extracttable();
-      }
-    
-      extracttable() {
+        this.storage.get('info').then((val) => {
+          this.fullName = val['fullName'];
+          this.tag = val['tag'];
+         
+  
+
+
         this.moneyList = this.firestoreService.getFirestoreData2(
-          'paymentList', 'tag', this.storage.get(STORAGE_KEY2).tag, 'name', this.storage.get(STORAGE_KEY2).fullName      );
+          'paymentList', 'tag', this.tag, 'name', this.fullName);
         this.moneyList.subscribe(data => {
           this.moneyData = (data);
           console.log(data);
     
         });
+
         this.payList = this.firestoreService.getFirestoreData2(
-          'payList', 'tag', this.storage.get(STORAGE_KEY2).tag, 'name', this.storage.get(STORAGE_KEY2).fullName      );
+          'payList', 'tag', this.tag, 'name', this.fullName);
         this.payList.subscribe(data => {
           this.payData = (data);
           console.log(data);
     
         });
 
+        });
+       }
+
+      ngOnInit() {
+        
       }
+    
+      
 
   gotohome()
   {
