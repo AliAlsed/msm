@@ -7,14 +7,13 @@ import { AuthenticateService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { FirebaseService } from '../firebase.service';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
-const STORAGE_KEY1 = 'local_user';
-const STORAGE_KEY2 = 'info';
+
 import { ToastController } from '@ionic/angular';
 import { NetworkService } from '../network.service';
 import { profile } from '../model/profile.interface';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FcmService } from '../fcm.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +31,7 @@ export class LoginPage implements OnInit {
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
     private db: AngularFireDatabase,
-    @Inject(SESSION_STORAGE) private storage: StorageService,
+    private storage: Storage,
     private firestoreService: FirebaseService,
     private router: Router,
     public toastController: ToastController,
@@ -73,18 +72,16 @@ export class LoginPage implements OnInit {
   }
   loginUser(value){
     if (value.email != "admin@admin.com"){
-    console.log(value.email);
+   
     this.authService.loginUser(value).then(res => {
-       this.storage.set(STORAGE_KEY1, this.authService.userDetails());
-       this.profile= this.firestoreService.getmyprofileDetail('studentList',this.storage.get(STORAGE_KEY1).email).valueChanges();
+       this.profile= this.firestoreService.getmyprofileDetail('studentList',value.email).valueChanges();
        this.profile.subscribe(data => {
-         this.storage.set(STORAGE_KEY2, data);   // store inforamation of student
-         console.log(data['fullName']);  
-         console.log(data);         
+       
+         this.storage.set('info', data);   // store inforamation of student
+         //console.log(data['fullName']);  
          this.fcm.getToken(data['stage'],data['division'],data['fullName']);
        });
-       this.errorMessage = "";
-       console.log(this.logData);
+     
        this.navCtrl.navigateForward('/home');
       // this.router.navigate(['home']);
      }, err => {

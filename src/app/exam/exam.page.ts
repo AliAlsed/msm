@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 import { Observable } from 'rxjs';
-import { StorageService, SESSION_STORAGE } from 'angular-webstorage-service';
+import { Storage } from '@ionic/storage';
+import { NetworkService } from '../network.service';
 
-const STORAGE_KEY2 = 'info';
 @Component({
   selector: 'app-exam',
   templateUrl: './exam.page.html',
@@ -14,25 +14,32 @@ export class ExamPage implements OnInit {
 
   examList: Observable<any[]>;
   examData: any;
-
+  tag: any;
   constructor(private navCtrl: NavController,
     private firestoreService: FirebaseService,
-      @Inject(SESSION_STORAGE) private storage: StorageService,) { }
+    private storage: Storage,public network: NetworkService) 
+    { 
+        this.network.getCurrentNetworkStatus();
+    this.storage.get('info').then((val) => {
+      this.tag = val['tag'];
+     
 
-  ngOnInit() {
-    this.extracttable();
-  }
-
-  extracttable() {
     this. examList = this.firestoreService.getFirestoreData(
-      'examList', 'tag', this.storage.get(STORAGE_KEY2).tag     );
+      'examList', 'tag', this.tag  );
     this. examList.subscribe(data => {
       this. examData = data;
       console.log(data);
 
 
     });
+
+    });
+      }
+
+  ngOnInit() {
+    
   }
+
 
   gotohome()
   {

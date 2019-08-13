@@ -21,12 +21,13 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FCM } from '@ionic-native/fcm/ngx';
 import {  AuthGuard } from './auth.guard';
-
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(),
     NgxYoutubePlayerModule.forRoot(),
     AppRoutingModule,
