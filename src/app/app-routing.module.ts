@@ -28,7 +28,9 @@ const routes: Routes = [
   { path: 'teacher', loadChildren: './teacher/teacher.module#TeacherPageModule' },
   { path: 'exam', loadChildren: './exam/exam.module#ExamPageModule' },
   { path: 'holiday', loadChildren: './holiday/holiday.module#HolidayPageModule' },
-  { path: 'info', loadChildren: './info/info.module#InfoPageModule' }
+  { path: 'info', loadChildren: './info/info.module#InfoPageModule' },
+  { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' },
+  { path: 'request', loadChildren: './request/request.module#RequestPageModule' }
 ];
 
 @NgModule({

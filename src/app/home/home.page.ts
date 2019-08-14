@@ -3,17 +3,26 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NavController, ModalController, LoadingController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
+import { ChatService } from '../chat.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  filteredusers: any;
+  ngOnInit(): void {
+    this.chatservice.getAdmin().then((data) => {
+      this.filteredusers = data;
+    });
+  }
   loaderToShow: any;
-  constructor( private navCtrl: NavController, 
+  constructor( 
+    private navCtrl: NavController, 
     private authService: AuthenticateService,
     public loadingController: LoadingController,
-  
+    public chatservice: ChatService,
+
   ) {
     
     }
@@ -71,6 +80,8 @@ export class HomePage {
   gotoinfo() { this.showLoader('info'); }
   gotoholiday() { this.showLoader('holiday'); }
   gototeacher() { this.showLoader('teacher'); }
-
-
+  gotochat() { 
+    this.chatservice.initializefriend(this.filteredusers);
+    this.showLoader('chat'); }
+  gotorequest() { this.showLoader('request'); }
 }

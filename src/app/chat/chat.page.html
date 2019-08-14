@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons>
+        <ion-back-button slot="start"></ion-back-button>
+        </ion-buttons>
+
+    <ion-title style="text-align: right"> تواصل معنا</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content padding class="contentBg"  id="chat-parent" overflow-scroll="true">
+    <div>
+      <div id="chat-container">
+        <span class="line-style"></span>
+        <hr>
+        <div class="message-wrap">
+          <div *ngFor="let item of allmessages;let i = index; let first = first; let last = last" class="message">
+  
+            <div class="message-left" *ngIf="item.sentby == buddy.uid">
+              <img class="user-img" [src]="buddy.image">
+              <div class="msg-detail">
+                <div class="msg-content">
+                  <p class="line-breaker " *ngIf="!imgornot[i]" >{{item.message}}</p>
+                  <img src="{{item.message}}" *ngIf="imgornot[i]">
+                </div>
+              </div>
+            </div>
+            <div class="message-right" *ngIf="item.sentby != buddy.uid">
+            <img class="user-img" [src]="photoURL">
+              <div class="msg-detail">
+                <div class="msg-info">
+                </div>
+                <div class="msg-content">
+                  <p class="line-breaker  ">{{item.message}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </ion-content>
+  <ion-footer ion-fixed>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-input [(ngModel)]="newmessage" placeholder="Aa" style="color:#000">
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-button size="small" shape="round"  (click)="addmessage()">
+            <ion-icon slot="icon-only" name="send"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
