@@ -34,40 +34,26 @@
                 <table class="table table-danger ">
                   
                   <thead class="text-danger">
-                    <th>
-                      <h5>
-                         نوع المخالفة
-                      </h5>
-                    </th>
-                    <th>
-                      <h5>
-                         مبلغ الغرامة
-      
-      
-                      </h5>
-                    </th>
-                    <th>
-                      <h5> 
-                        التاريخ 
-      
-                      </h5>
-                    </th>
+                    <th> نوع المخالفة </th>
+
+                    <th>مبلغ الغرامة </th>
+                    <th> التاريخ  </th>
                   </thead>
                   <tbody>
                     <tr *ngFor="let pay of penData">
                       <td>
-                        <h5>{{pay.penalty_type}}</h5>
+                     {{pay.penalty_type}}
                       </td>
                       <td>
-                        <h5>
+                     
                           {{pay.penalty_amount}}
-                        </h5>
+                       
                       </td>
       
                       <td>
-                        <h5>
+                    
                           {{pay.date}}
-                        </h5>
+                       
                       </td>
                     </tr>
                   </tbody>
