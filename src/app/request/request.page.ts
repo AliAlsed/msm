@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-request',
@@ -7,6 +8,10 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./request.page.scss'],
 })
 export class RequestPage implements OnInit {
+  firerequest = firebase.database().ref('request');
+ type = '';
+ count = 0;
+ reason = '';
 
   constructor(private navCtrl: NavController) { }
 
@@ -16,6 +21,12 @@ export class RequestPage implements OnInit {
   {
       this.navCtrl.navigateForward('/home');
   }
-
+  add(type,count,reason){
+    this.firerequest.child(firebase.auth().currentUser.uid).set({
+      type:type,
+      count:count,
+      reason:reason
+    });
+  }
 
 }
