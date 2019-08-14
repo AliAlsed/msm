@@ -3,7 +3,7 @@
 
 
     <ion-title slot="end">
-      <h4>القسط </h4>
+      <h4> القسط </h4>
     </ion-title>
     <ion-buttons (click)="gotohome()">
       <h4>
@@ -37,38 +37,37 @@
             
             <thead class="text-danger">
               <th>
-                <h5>
+           
                   القسط الكلي
-                </h5>
+            
               </th>
               <th>
-                <h5>
+              
                   المبلغ المدفوع
 
 
-                </h5>
               </th>
               <th>
-                <h5> المبلغ المتبقي
+                المبلغ المتبقي
 
-                </h5>
+               
               </th>
             </thead>
             <tbody>
               <tr *ngFor="let money of moneyData">
                 <td>
-                  <h5>{{money.total_amount}}</h5>
+                 {{money.total_amount}}
                 </td>
                 <td>
-                  <h5>
+                  
                     {{money.amount_paid}}
-                  </h5>
+                  
                 </td>
 
                 <td>
-                  <h5>
+                  
                     {{money.total_amount- money.amount_paid}}
-                  </h5>
+                
                 </td>
               </tr>
             </tbody>
@@ -85,33 +84,32 @@
           <table class="table table-danger ">
             <thead class="text-danger">
               <th>
-                <h5>
+            
                   القسط
-                </h5>
               </th>
               <th>
-                <h5>
+                
                   قيمة الدفع
 
 
-                </h5>
+                
               </th>
               <th>
-                <h5>
+                
                   تاريخ الدفع
 
-                </h5>
+                
               </th>
             </thead>
             <tbody>
               <tr *ngFor="let pay of payData">
                 <td>
-                  <h5>{{pay.number}}</h5>
+                  {{pay.number}}
                 </td>
                 <td>
-                  <h5>
+                  
                     {{pay.amountpaid}}
-                  </h5>
+                  
                 </td>
 
                 <td>

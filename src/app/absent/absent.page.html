@@ -18,24 +18,20 @@
 
 <ion-content>
 
-    <ion-card color="primary">
-        <ion-card-header style="text-align: center">
-            
-            <ion-card-title> <h4>قائمة الغياب </h4></ion-card-title>
-          </ion-card-header>
+    
     <div class="col-md-12" style="direction: rtl">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-danger ">
                 <thead class="text-danger">
               <th>
-               <h5> التاريخ
-                 </h5>
+                التاريخ
+                
                </th>
             </thead>
             <tbody>
               <tr *ngFor="let absent of absentData">
-                <td><h5>{{absent.date}}</h5></td>
+                <td>{{absent.date}}</td>
               </tr>
             </tbody>
           </table>
@@ -43,8 +39,6 @@
       </div>
 </div>
 
-  </ion-card>
- 
 
 
 

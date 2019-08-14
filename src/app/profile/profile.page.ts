@@ -15,17 +15,17 @@ export class ProfilePage implements OnInit  {
   constructor(
     private navCtrl: NavController,
     private network: NetworkService,
-    public storage: Storage,
+    private storage: Storage,
   ) 
   { 
-    network.getCurrentNetworkStatus();
-    storage.get('info').then((val) => {
-      this.myprofileData = Array.of(val); 
-    });
+   
   }
 
-  
   ngOnInit() {
+    this.network.getCurrentNetworkStatus();
+    this.storage.get('info').then((val) => {
+      this.myprofileData = Array.of(val); 
+    });
   }
 
   gotohome() {

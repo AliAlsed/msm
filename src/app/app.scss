@@ -1,6 +1,84 @@
 // App Styles
-// ----------------------------------------------------------------------------
-// Put style rules here that you want to apply to the entire application. These 
-// styles are for the entire app and not just one component. Additionally, this 
-// file can hold Sass mixins, functions, and placeholder classes to be imported 
-// and used throughout the application.
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+:root {
+    --main-bg-color: #ff5e00;
+    --main-se-color: #e45a1b;
+    --white-color: #fff;
+}
+.default-color {
+    color: var(--main-bg-color);
+}
+
+.default-bg-color {
+    background-color: var(--main-bg-color);
+}
+
+.btn.btn-danger {
+    color: var(--white-color);
+    background-color: var(--main-bg-color);
+    border-color: var(--main-bg-color);
+    box-shadow: unset;
+}
+
+body,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th,
+tr,
+td,
+span {
+    font-family: 'Cairo', sans-serif;
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse;
+    text-align: center; 
+   
+}
+
+tr { 
+    background: #eee; 
+}
+th { 
+    background: #109173; 
+    color: white; 
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    align-items: center;
+  justify-content: center; 
+
+}
+td { 
+    padding: 6px; 
+    font-weight: bold;
+   border: 1px solid #ccc; 
+    text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+ion-toast{
+    text-align: center;
+    padding: 5px;
+}
+
+
